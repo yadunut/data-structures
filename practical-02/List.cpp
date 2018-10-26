@@ -42,7 +42,7 @@ int List::getLength() { return len; }
 
 void List::print() {
   for (int i = 0; i < len; i++) {
-    cout << "(" << i + 1 << ") " << items[i]->print() << endl;
+    cout << "(" << i + 1 << ") " << items[i]->getName() << endl;
   }
 }
 

@@ -68,7 +68,7 @@ int main() {
     }
     case 4: {
       int input = inputNumber("Enter the index: ");
-      cout << list.get(input)->print() << endl;
+      cout << list.get(input)->getTelNo() << endl;
       break;
     }
     case 0:
