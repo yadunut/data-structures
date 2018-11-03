@@ -3,26 +3,28 @@
 
 using namespace std;
 
-List::List() {
-  size = 0;
-  firstNode = nullptr;
-}
-bool List::isValid(int index) { return (index >= 0) && (index <= size); }
+List::List() { size = 0; }
+bool List::isValid(int index) { return (index >= 1) && (index <= size + 1); }
 
-bool List::add(ItemType item) { return this->add(this->size, item); }
+bool List::add(ItemType item) { return this->add(this->size + 1, item); }
 
 bool List::add(int index, ItemType item) {
   if (!this->isValid(index))
     return false;
 
-  Node **current = &this->firstNode;
-  for (int i = 0; i < index; i++)
-    current = &(*current)->next;
+  if (index == 1) {
+    this->firstNode = new Node{item, this->firstNode};
+    this->size++;
+    return true;
+  }
 
-  *current = new Node{item, *current};
+  Node *current = this->firstNode;
+  for (int i = 0; i < index - 2; i++) {
+    current = current->next;
+  }
 
+  current->next = new Node{item, current->next};
   this->size++;
-  cout << "Added " << item << endl;
   return true;
 }
 
@@ -31,14 +33,14 @@ bool List::remove(int index) {
     return false;
 
   // Check if im deleting the root node
-  if (index == 0) {
+  if (index == 1) {
     Node *temp = this->firstNode;
     this->firstNode = this->firstNode->next;
     delete temp;
   } else {
 
     Node *current = this->firstNode;
-    for (int i = 0; i < index - 1; i++)
+    for (int i = 0; i < index - 2; i++)
       current = current->next;
 
     Node *temp = current->next;
@@ -51,18 +53,18 @@ bool List::remove(int index) {
 }
 
 ItemType List::get(int index) {
-  if (!this->isValid(index)) {
+  if (!this->isValid(index + 1)) {
     return ItemType();
   }
   Node *current = this->firstNode;
-  for (int i = 0; i < index; i++)
+  for (int i = 1; i < index; i++)
     current = current->next;
   return current->item;
 }
 
 bool List::isEmpty() { return this->firstNode == nullptr; }
 
-int getLength() { return this->size; }
+int List::getLength() { return this->size; }
 
 void List::print() {
   Node *curr = this->firstNode;
