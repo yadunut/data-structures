@@ -3,4 +3,4 @@ project(practical_05)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(practical_05 main.cpp Stack.cpp Stack.h Queue.cpp Queue.h Queue_Circle.cpp)
+add_executable(practical_05 main.cpp Stack.cpp Stack.h Queue.cpp Queue.h)

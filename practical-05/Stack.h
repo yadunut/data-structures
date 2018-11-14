@@ -2,8 +2,8 @@
 // Created by Yadunand Prem on 6/11/18.
 //
 
-#ifndef PRACTICAL_04_STACK_H
-#define PRACTICAL_04_STACK_H
+#ifndef PRACTICAL_05_STACK_H
+#define PRACTICAL_05_STACK_H
 
 #include <string>
 
@@ -39,4 +39,4 @@ class Stack {
   void displayInOrderOfInsertion();
 };
 
-#endif // PRACTICAL_04_STACK_H
+#endif // PRACTICAL_05_STACK_H

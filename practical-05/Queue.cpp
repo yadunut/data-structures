@@ -5,9 +5,6 @@
 #include "Queue.h"
 #include <iostream>
 
-#ifdef QUEUE_POINTER
-
-#endif
 Queue::Queue() { this->size = 0; }
 Queue::~Queue() {
   while (!this->isEmpty()) {
@@ -21,7 +18,7 @@ bool Queue::enqueue(ItemType item) {
   Node *node = new Node{item, nullptr};
   if (this->isEmpty()) {
     this->backNode = node;
-    this->frontNode = this->backNode;
+    this->frontNode = node;
     this->size++;
     return true;
   }
