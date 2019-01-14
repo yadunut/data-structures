@@ -1,0 +1,4 @@
+iPhone_7	10	1088.00
+Galaxy_S7	10	999.00
+Xperia_Z	10	899.00
+Redmi_3S	10	299.00
