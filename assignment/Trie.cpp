@@ -1,11 +1,18 @@
 #include "Trie.h"
 
-Trie::Trie() { this->roots = new std::vector<TrieNode>(); }
+Trie::Trie() {}
 
 int Trie::getCharPos(char c) { return c - 'a'; }
 
-bool Trie::insert(std::string s) { return false; }
-
-bool Trie::search(std::string s) { return false; }
-
-std::string Trie::toString() { return ""; }
+void Trie::insert(std::string s) {
+  int pos = getCharPos(s[0]);
+  TrieNode **curr = &roots[pos];
+  if (*curr == nullptr) {
+    printf("Is null");
+    *curr = new TrieNode{s[0], false};
+  }
+  for (int i = 1; i < s.size(); i++) {
+    pos = getCharPos(s[i]);
+    curr = &curr[pos];
+  }
+}
