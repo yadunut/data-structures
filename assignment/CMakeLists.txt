@@ -3,4 +3,4 @@ project(assignment)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(assignment main.cpp Trie.cpp)
+add_executable(assignment main.cpp Trie.cpp TrieNode.cpp)

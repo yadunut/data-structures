@@ -1,18 +1,30 @@
 #include "Trie.h"
 
-Trie::Trie() {}
+Trie::Trie() {
+  this->root = new TrieNode;
+}
 
 int Trie::getCharPos(char c) { return c - 'a'; }
 
 void Trie::insert(std::string s) {
-  int pos = getCharPos(s[0]);
-  TrieNode **curr = &roots[pos];
-  if (*curr == nullptr) {
-    printf("Is null");
-    *curr = new TrieNode{s[0], false};
+  TrieNode *curr = root;
+  for (char i : s) {
+    int index = getCharPos(i);
+    if (curr->children[index] == nullptr)
+      curr->children[index] = new TrieNode;
+    curr = curr->children[index];
   }
-  for (int i = 1; i < s.size(); i++) {
-    pos = getCharPos(s[i]);
-    curr = &curr[pos];
+  curr->EOW = true;
+}
+
+bool Trie::search(std::string s) {
+  TrieNode *curr = root;
+  for (char i : s) {
+    int index = getCharPos(i);
+    if (curr->children[index] == nullptr)
+      return false;
+    curr = curr->children[index];
   }
+
+  return (curr!= nullptr && curr->EOW);
 }

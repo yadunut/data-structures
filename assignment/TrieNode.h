@@ -1,8 +1,13 @@
 #pragma once
 
-struct TrieNode {
-  char item;
-  bool EOW; // End of Word
+#define ALPHABET_COUNT 26
 
-  TrieNode *children[26];
+class TrieNode {
+ public:
+  bool EOW; // End of Word
+  TrieNode *children[ALPHABET_COUNT];
+
+  TrieNode();
 };
+
+
