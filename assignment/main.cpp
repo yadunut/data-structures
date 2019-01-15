@@ -12,7 +12,7 @@ void displayMenu();
 int main() {
   Trie root;
   displayMenu();
-  loadDictionary("../data/dictionary.txt", &root);
+  loadDictionary("../data/randomwords100.txt", &root);
   root.display();
 }
 
