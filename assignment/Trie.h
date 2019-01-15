@@ -3,13 +3,21 @@
 #include "TrieNode.h"
 #include <string>
 
+struct TrieSearchResult {
+  bool found;
+  std::string *strings;
+};
+
 class Trie {
 public:
+  int count;
   Trie();
 
   void insert(std::string s);
 
-  bool search(std::string s);
+  TrieSearchResult search(std::string s);
+
+  void display();
 
   // getPos gets the position of a character in the array
   static int getCharPos(char c);

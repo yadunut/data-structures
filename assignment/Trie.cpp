@@ -1,7 +1,9 @@
 #include "Trie.h"
+#include <iostream>
 
 Trie::Trie() {
   this->root = new TrieNode;
+  this->count = 0;
 }
 
 int Trie::getCharPos(char c) { return c - 'a'; }
@@ -14,17 +16,42 @@ void Trie::insert(std::string s) {
       curr->children[index] = new TrieNode;
     curr = curr->children[index];
   }
-  curr->EOW = true;
+  if (!curr->EOW) {
+    this->count++;
+    curr->EOW = true;
+  }
 }
 
-bool Trie::search(std::string s) {
+TrieSearchResult Trie::search(std::string s) {
   TrieNode *curr = root;
+  TrieSearchResult result;
   for (char i : s) {
     int index = getCharPos(i);
     if (curr->children[index] == nullptr)
-      return false;
+      result.found = false;
+    return result;
     curr = curr->children[index];
   }
 
-  return (curr!= nullptr && curr->EOW);
+  if (curr != nullptr && curr->EOW)
+    result.found = true;
+  else
+    result.found = false;
+  return result;
 }
+
+void _display(TrieNode *node, std::string str) {
+  if (node->EOW) {
+    std::cout << str << std::endl;
+  }
+
+  for (int i = 0; i < ALPHABET_COUNT; i++) {
+    if (node->children[i] != nullptr) {
+      str += i + 'a'; // This line converts the number from 0-25 back to a
+                      // character by adding 'a' back to it
+      _display(node->children[i], str);
+    }
+  }
+}
+
+void Trie::display() { _display(this->root, ""); }
