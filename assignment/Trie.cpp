@@ -27,16 +27,14 @@ TrieSearchResult Trie::search(std::string s) {
   TrieSearchResult result;
   for (char i : s) {
     int index = getCharPos(i);
-    if (curr->children[index] == nullptr)
+    if (curr->children[index] == nullptr) {
       result.found = false;
-    return result;
+      return result;
+    }
     curr = curr->children[index];
   }
 
-  if (curr != nullptr && curr->EOW)
-    result.found = true;
-  else
-    result.found = false;
+  result.found = curr != nullptr && curr->EOW;
   return result;
 }
 
@@ -47,7 +45,7 @@ void _display(TrieNode *node, std::string str) {
 
   for (int i = 0; i < ALPHABET_COUNT; i++) {
     if (node->children[i] != nullptr) {
-      str += i + 'a'; // This line converts the number from 0-25 back to a
+      str += char(i + 'a'); // This line converts the number from 0-25 back to a
                       // character by adding 'a' back to it
       _display(node->children[i], str);
     }

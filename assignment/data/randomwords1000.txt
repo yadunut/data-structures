@@ -796,7 +796,7 @@ wind
 fill
 opposed
 theater
-Koran
+koran
 constitution
 treasurer
 cell
@@ -805,7 +805,7 @@ estate
 ring
 rebel
 glory
-AIDS
+aids
 owl
 annual
 concession

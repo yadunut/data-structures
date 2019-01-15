@@ -339,7 +339,7 @@ mosquito
 vein
 past
 unrest
-Europe
+europe
 hill
 weak
 isolation
@@ -480,7 +480,7 @@ separate
 party
 bulb
 sharp
-Koran
+koran
 fade
 computer
 emphasis
@@ -893,7 +893,7 @@ protest
 gesture
 population
 print
-Bible
+bible
 belief
 manner
 escape
@@ -1017,7 +1017,7 @@ ghostwriter
 wear
 reward
 talk
-Venus
+venus
 faint
 entertain
 access
@@ -1350,7 +1350,7 @@ square
 bacon
 photocopy
 build
-X-ray
+x-ray
 selection
 convict
 prevalence
@@ -1663,7 +1663,7 @@ think
 tip
 bounce
 space
-AIDS
+aids
 morsel
 calculation
 guess
@@ -2790,7 +2790,7 @@ fox
 cinema
 problem
 blame
-TRUE
+true
 history
 tear
 concentration
@@ -3175,7 +3175,7 @@ bean
 charter
 trade
 catch
-Sunday
+sunday
 map
 wage
 decisive
@@ -3222,7 +3222,7 @@ physical
 product
 bathroom
 total
-Mars
+mars
 stumble
 responsible
 live

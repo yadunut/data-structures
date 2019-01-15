@@ -12,13 +12,7 @@ void displayMenu();
 int main() {
   Trie root;
   displayMenu();
-  loadDictionary("/home/yadunut/dev/src/github.com/yadunut/data-structures/assignment/data/randomwords100.txt", &root);
-  TrieSearchResult res = root.search("inspiration");
-  if (res.found) {
-    cout << "Found!" << endl;
-  } else {
-    cout << "Not Found!" << endl;
-  }
+  loadDictionary("../data/randomwords1000.txt", &root);
   root.display();
 }
 
