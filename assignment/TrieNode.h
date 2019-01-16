@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <iostream>
 
 #define ALPHABET_COUNT 26
 
@@ -8,6 +10,5 @@ class TrieNode {
   TrieNode *children[ALPHABET_COUNT];
 
   TrieNode();
+  void display(std::string s);
 };
-
-

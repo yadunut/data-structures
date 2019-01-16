@@ -1,5 +1,4 @@
 #include "Trie.h"
-#include <iostream>
 
 Trie::Trie() {
   this->root = new TrieNode;
@@ -36,23 +35,15 @@ TrieSearchResult Trie::search(std::string s) {
   return result;
 }
 
-void _display(TrieNode *node, std::string &str) {
-  if (node->EOW) {
-    std::cout << str << std::endl;
-  }
+void Trie::display() { this->root->display(""); }
 
-  for (int i = 0; i < ALPHABET_COUNT; i++) {
-    TrieNode *curr = node->children[i];
-    if (curr != nullptr) {
-      char next = static_cast<char>(i + 'a');
-      str.push_back(next);
-      _display(curr, str);
-      str.pop_back();
-    }
+void Trie::displayStr(std::string s) {
+  TrieNode *curr = this->root;
+  for (char c: s) {
+    int index = c - 'a';
+    curr = curr->children[index];
   }
-}
-
-void Trie::display() {
-  std::string str;
-  _display(this->root, str);
+  if (curr) {
+    curr->display(s);
+  }
 }
