@@ -10,7 +10,6 @@ struct TrieSearchResult {
 
 class Trie {
 public:
-  int count;
   Trie();
 
   void insert(std::string s);
@@ -20,9 +19,9 @@ public:
   void display();
 
   // getPos gets the position of a character in the array
-  static int getCharPos(char c);
 
 private:
+  int count;
   TrieNode *root;
 
 };

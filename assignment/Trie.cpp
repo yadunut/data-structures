@@ -6,12 +6,10 @@ Trie::Trie() {
   this->count = 0;
 }
 
-int Trie::getCharPos(char c) { return c - 'a'; }
-
 void Trie::insert(std::string s) {
   TrieNode *curr = root;
   for (char i : s) {
-    int index = getCharPos(i);
+    int index = i - 'a';
     if (curr->children[index] == nullptr)
       curr->children[index] = new TrieNode;
     curr = curr->children[index];
@@ -24,9 +22,9 @@ void Trie::insert(std::string s) {
 
 TrieSearchResult Trie::search(std::string s) {
   TrieNode *curr = root;
-  TrieSearchResult result;
+  TrieSearchResult result{};
   for (char i : s) {
-    int index = getCharPos(i);
+    int index = i - 'a';
     if (curr->children[index] == nullptr) {
       result.found = false;
       return result;
@@ -38,18 +36,23 @@ TrieSearchResult Trie::search(std::string s) {
   return result;
 }
 
-void _display(TrieNode *node, std::string str) {
+void _display(TrieNode *node, std::string &str) {
   if (node->EOW) {
     std::cout << str << std::endl;
   }
 
   for (int i = 0; i < ALPHABET_COUNT; i++) {
-    if (node->children[i] != nullptr) {
-      str += char(i + 'a'); // This line converts the number from 0-25 back to a
-                      // character by adding 'a' back to it
-      _display(node->children[i], str);
+    TrieNode *curr = node->children[i];
+    if (curr != nullptr) {
+      char next = static_cast<char>(i + 'a');
+      str.push_back(next);
+      _display(curr, str);
+      str.pop_back();
     }
   }
 }
 
-void Trie::display() { _display(this->root, ""); }
+void Trie::display() {
+  std::string str;
+  _display(this->root, str);
+}

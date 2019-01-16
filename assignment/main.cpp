@@ -1,7 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "Trie.h"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -30,6 +30,9 @@ void loadDictionary(string filename, Trie *t) {
   ifstream file(filename);
   string line;
   while (getline(file, line)) {
+    //    This is to remove the \r from the string
+    if (line[line.length() - 1] == '\r')
+      line.erase(line.length() - 1);
     t->insert(line);
   }
   file.close();
