@@ -1,4 +1,5 @@
 #include "Trie.h"
+#include <vector>
 #include <fstream>
 
 using namespace std;
@@ -11,6 +12,8 @@ void addFile(Trie *t);
 void spellCheckWord(Trie *t);
 void spellCheckFile(Trie *t);
 void displayWordStartingWithChar(Trie *t);
+
+void saveDictionary(Trie *t);
 
 int main() {
   Trie root;
@@ -33,7 +36,9 @@ int main() {
         break;
       case 4:addFile(&root);
         break;
-      case 5:break;
+      case 5:
+        saveDictionary(&root);
+            break;
       case 6:
         root.display();
         break;
@@ -43,6 +48,22 @@ int main() {
       default:return 0;
     }
   }
+}
+
+void saveDictionary(Trie *t) {
+  std::vector<std::string> wordList = t->getWords();
+  string filename;
+  cout << "Key in filename to save in /data (as .txt): ";
+  cin >> filename;
+  cout << endl;
+  cout << filename;
+  ofstream dicFile;
+  dicFile.open("../data/" + filename);
+  for (string w : wordList) {
+    dicFile << w << endl;
+  }
+  dicFile.close();
+  cout << "Saved!" << endl;
 }
 
 void addFileToDictionary(string filename, Trie *t) {

@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+
 struct TrieSearchResult {
   bool found;
   std::string *strings;
@@ -21,6 +22,8 @@ class Trie {
   void displayStr(std::string c);
 
     int getCount();
+
+    std::vector<std::string> getWords();
 
   // getPos gets the position of a character in the array
 

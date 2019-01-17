@@ -52,3 +52,7 @@ void Trie::displayStr(std::string s) {
 int Trie::getCount() {
   return count;
 }
+
+std::vector<std::string> Trie::getWords() {
+  return this->root->getWords("");
+}
