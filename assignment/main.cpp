@@ -8,11 +8,13 @@ void addFileToDictionary(string filename, Trie *t);
 void displayMenu();
 void addWord(Trie *root);
 void addFile(Trie *t);
+void spellCheckWord(Trie *t);
 
 void displayWordStartingWithChar(Trie *t);
 
 int main() {
   Trie root;
+
   while (true) {
     displayMenu();
 
@@ -21,7 +23,9 @@ int main() {
     cout << endl;
 
     switch (option) {
-      case 1:break;
+      case 1:
+        spellCheckWord(&root);
+        break;
       case 2:break;
       case 3:addWord(&root);
         break;
@@ -47,6 +51,20 @@ void addFileToDictionary(string filename, Trie *t) {
     t->insert(line);
   }
   file.close();
+}
+
+void spellCheckWord(Trie *t) {
+  TrieSearchResult searchResult;
+  string word;
+  cout << "Enter word to spell check : ";
+  cin >> word;
+  cout << endl;
+  searchResult = t->search(word);
+  if (!searchResult.found) {
+    cout << "Word is not spelt correctly!" << endl;
+  } else {
+    cout << "Word is spelt correctly!" << endl;
+  }
 }
 
 void addFile(Trie *t) {

@@ -22,8 +22,8 @@ void Trie::insert(std::string s) {
 TrieSearchResult Trie::search(std::string s) {
   TrieNode *curr = root;
   TrieSearchResult result{};
-  for (char i : s) {
-    int index = i - 'a';
+  for (char c : s) {
+    int index = c - 'a';
     if (curr->children[index] == nullptr) {
       result.found = false;
       return result;
