@@ -9,9 +9,7 @@ void displayMenu();
 void addWord(Trie *root);
 void addFile(Trie *t);
 void spellCheckWord(Trie *t);
-
 void spellCheckFile(Trie *t);
-
 void displayWordStartingWithChar(Trie *t);
 
 int main() {
@@ -36,9 +34,11 @@ int main() {
       case 4:addFile(&root);
         break;
       case 5:break;
-      case 6:root.display();
+      case 6:
+        root.display();
         break;
-      case 7:displayWordStartingWithChar(&root);
+      case 7:
+        displayWordStartingWithChar(&root);
         break;
       default:return 0;
     }

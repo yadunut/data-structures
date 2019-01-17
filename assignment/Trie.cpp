@@ -1,4 +1,5 @@
 #include "Trie.h"
+#include <vector>
 
 Trie::Trie() {
   this->root = new TrieNode;

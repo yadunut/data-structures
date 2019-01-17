@@ -11,4 +11,6 @@ class TrieNode {
 
   TrieNode();
   void display(std::string s);
+
+    std::vector<std::string> getWords(std::string s);
 };
