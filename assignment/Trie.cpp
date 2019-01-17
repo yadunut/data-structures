@@ -31,7 +31,7 @@ TrieSearchResult Trie::search(std::string s) {
     curr = curr->children[index];
   }
 
-  result.found = curr != nullptr && curr->EOW;
+  result.found = curr->EOW;
   return result;
 }
 
