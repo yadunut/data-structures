@@ -20,6 +20,8 @@ class Trie {
   // displayStr searches for the words starting with the string
   void displayStr(std::string c);
 
+    int getCount();
+
   // getPos gets the position of a character in the array
 
  private:

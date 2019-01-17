@@ -10,6 +10,8 @@ void addWord(Trie *root);
 void addFile(Trie *t);
 void spellCheckWord(Trie *t);
 
+void spellCheckFile(Trie *t);
+
 void displayWordStartingWithChar(Trie *t);
 
 int main() {
@@ -26,7 +28,9 @@ int main() {
       case 1:
         spellCheckWord(&root);
         break;
-      case 2:break;
+      case 2:
+        spellCheckFile(&root);
+            break;
       case 3:addWord(&root);
         break;
       case 4:addFile(&root);
@@ -50,17 +54,32 @@ void addFileToDictionary(string filename, Trie *t) {
       line.erase(line.length() - 1);
     t->insert(line);
   }
+  cout << "Number of words in dictionary: " << t->getCount() << endl;
   file.close();
 }
 
+bool isValidWord(string w, Trie *t) {
+  TrieSearchResult searchResult = t->search(w);
+  return searchResult.found;
+}
+
+void spellCheckFile(Trie *t) {
+  string filename, line, result;
+  cout << "Enter filename in data/ : ";
+  cin >> filename;
+  cout << endl;
+  ifstream file("../data/" + filename);
+  while (getline(file, line)) {
+    string status = isValidWord(line, t) ? "Found" : "Not found";
+    cout << line << ": " << status << endl;
+  }
+}
 void spellCheckWord(Trie *t) {
-  TrieSearchResult searchResult;
   string word;
   cout << "Enter word to spell check : ";
   cin >> word;
   cout << endl;
-  searchResult = t->search(word);
-  if (!searchResult.found) {
+  if (isValidWord(word, t)) {
     cout << "Word is not spelt correctly!" << endl;
   } else {
     cout << "Word is spelt correctly!" << endl;
@@ -83,7 +102,7 @@ void displayMenu() {
   cout << "[4] Add file to dictionary" << endl;
   cout << "[5] Save the dictionary" << endl;
   cout << "[6] Display all words" << endl;
-  cout << "[7] Display all words starting with letter" << endl;
+  cout << "[7] Display all words starting with substring" << endl;
   cout << endl;
 }
 
@@ -93,6 +112,7 @@ void addWord(Trie *root) {
   cin >> line;
   cout << endl;
   root->insert(line);
+  cout << "Number of words in dictionary: " << root->getCount() << endl;
 }
 
 void displayWordStartingWithChar(Trie *t) {

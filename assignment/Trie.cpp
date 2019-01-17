@@ -47,3 +47,7 @@ void Trie::displayStr(std::string s) {
     curr->display(s);
   }
 }
+
+int Trie::getCount() {
+  return count;
+}
