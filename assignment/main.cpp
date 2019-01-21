@@ -82,6 +82,7 @@ void addFileToDictionary(string filename, Trie *t) {
     //    This is to remove the \r from the string
     if (line[line.length() - 1] == '\r')
       line.erase(line.length() - 1);
+    std::transform(line.begin(), line.end(), line.begin(), ::tolower);
     t->insert(line);
   }
   cout << "Number of words in dictionary: " << t->getCount() << endl;
