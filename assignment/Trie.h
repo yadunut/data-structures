@@ -1,39 +1,42 @@
 #pragma once
 
 #include "TrieNode.h"
-#include <string>
 #include <iostream>
-
+#include <string>
 
 struct TrieSearchResult {
   bool found;
   std::string *strings;
 };
-
+// Trie classstores the root TrieNode
 class Trie {
- public:
+public:
+  // Constructor. Initializes the default values
   Trie();
-
+  // Inserts a string into the trie
   void insert(std::string s);
+  // Searches for the given word in the string. Returns a TrieSearchResult with
+  // true if found and false if not
   TrieSearchResult search(std::string s);
+  // Prints the elements in the trie
   void display();
 
   // displayStr searches for the words starting with the string
   void displayStr(std::string c);
 
-    int getCount();
+  // Prints the number of elements in the trie
+  int getCount();
 
-    std::vector<std::string> getWords();
+  // getWords returns a vector of words in the TrieNode
+  std::vector<std::string> getWords();
 
   // getPos gets the position of a character in the array
 
- private:
+private:
   int count;
   TrieNode *root;
 };
 
 /* Design Choice: The initial root node is used to store the 26 chars of the
  * alphabet. Thus, it will have a empty value for char and false for EOL
- *
- *
  */
