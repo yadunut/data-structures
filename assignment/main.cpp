@@ -1,18 +1,24 @@
 #include "Trie.h"
-#include <vector>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
-// addFileToDictionary loads file from the default path of test/
+// addFileToDictionary loads file into the Trie *t
 void addFileToDictionary(string filename, Trie *t);
+// displayMenu prints the menu to stdout
 void displayMenu();
+// addWord asks user for word and adds that to the trie
 void addWord(Trie *root);
+// addFile asks user for filename in the data/ directory to add to the trie
 void addFile(Trie *t);
+// spellCheckWord spell checks word
 void spellCheckWord(Trie *t);
+// spellCheckFile spell checks the file
 void spellCheckFile(Trie *t);
-void displayWordStartingWithChar(Trie *t);
-
+// displayWordStartingWithStr prints all the words starting with a given tring
+void displayWordStartingWithStr(Trie *t);
+// saveDictionary saves dictionary to a file
 void saveDictionary(Trie *t);
 
 int main() {
@@ -26,26 +32,29 @@ int main() {
     cout << endl;
 
     switch (option) {
-      case 1:
-        spellCheckWord(&root);
-        break;
-      case 2:
-        spellCheckFile(&root);
-            break;
-      case 3:addWord(&root);
-        break;
-      case 4:addFile(&root);
-        break;
-      case 5:
-        saveDictionary(&root);
-            break;
-      case 6:
-        root.display();
-        break;
-      case 7:
-        displayWordStartingWithChar(&root);
-        break;
-      default:return 0;
+    case 1:
+      spellCheckWord(&root);
+      break;
+    case 2:
+      spellCheckFile(&root);
+      break;
+    case 3:
+      addWord(&root);
+      break;
+    case 4:
+      addFile(&root);
+      break;
+    case 5:
+      saveDictionary(&root);
+      break;
+    case 6:
+      root.display();
+      break;
+    case 7:
+      displayWordStartingWithStr(&root);
+      break;
+    default:
+      return 0;
     }
   }
 }
@@ -136,7 +145,7 @@ void addWord(Trie *root) {
   cout << "Number of words in dictionary: " << root->getCount() << endl;
 }
 
-void displayWordStartingWithChar(Trie *t) {
+void displayWordStartingWithStr(Trie *t) {
   string line;
   cout << "Enter starting string: ";
   cin >> line;
