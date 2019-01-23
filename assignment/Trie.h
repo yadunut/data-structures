@@ -6,6 +6,7 @@
 
 struct TrieSearchResult {
   bool found;
+    bool isDelError, isAddError;
   std::string *strings;
 };
 // Trie classstores the root TrieNode
@@ -18,6 +19,8 @@ public:
   // Searches for the given word in the string. Returns a TrieSearchResult with
   // true if found and false if not
   TrieSearchResult search(std::string s);
+
+    TrieSearchResult searchWithError(std::string s);
   // Prints the elements in the trie
   void display();
 

@@ -21,6 +21,9 @@ void displayWordStartingWithStr(Trie *t);
 // saveDictionary saves dictionary to a file
 void saveDictionary(Trie *t);
 
+// spell Checks word for Addition or Deletion error
+void spellCheckWordWithError(Trie *t);
+
 int main() {
   Trie root;
 
@@ -28,7 +31,6 @@ int main() {
     displayMenu();
 
     int option;
-    cin >> option;
     cout << endl;
 
     switch (option) {
@@ -53,9 +55,29 @@ int main() {
     case 7:
       displayWordStartingWithStr(&root);
       break;
+      case 8:
+        spellCheckWordWithError(&root);
     default:
       return 0;
     }
+  }
+}
+
+void spellCheckWordWithError(Trie *t) {
+  string input;
+  cout << "Enter word to spellcheck: ";
+  cin >> input;
+  TrieSearchResult finalResult = t->searchWithError(input);
+  if (finalResult.found) {
+    if (finalResult.isDelError) {
+      cout << input << " has a deletion error" << endl;
+    } else if (finalResult.isAddError) {
+      cout << input << " has an insertion error" << endl;
+    } else {
+      cout << "Found " << input << " in dictionary" << endl;
+    }
+  } else {
+    cout << "Not found in dictionary!" << endl;
   }
 }
 
