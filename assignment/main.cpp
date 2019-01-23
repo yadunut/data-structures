@@ -59,6 +59,7 @@ int main() {
       break;
       case 8:
         spellCheckWordWithError(&root);
+            break;
     default:
       return 0;
     }
