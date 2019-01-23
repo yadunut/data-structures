@@ -16,12 +16,13 @@ void addFile(Trie *t);
 void spellCheckWord(Trie *t);
 // spellCheckFile spell checks the file
 void spellCheckFile(Trie *t);
-// displayWordStartingWithStr prints all the words starting with a given tring
+
+// displayWordStartingWithStr prints all the words starting with a given string
 void displayWordStartingWithStr(Trie *t);
 // saveDictionary saves dictionary to a file
 void saveDictionary(Trie *t);
 
-// spell Checks word for Addition or Deletion error
+// spell Checks word for addition or deletion error
 void spellCheckWordWithError(Trie *t);
 
 int main() {
@@ -31,6 +32,7 @@ int main() {
     displayMenu();
 
     int option;
+    cin >> option;
     cout << endl;
 
     switch (option) {
@@ -156,6 +158,7 @@ void displayMenu() {
   cout << "[5] Save the dictionary" << endl;
   cout << "[6] Display all words" << endl;
   cout << "[7] Display all words starting with substring" << endl;
+  cout << "[8] Spell check a word with error checking" << endl;
   cout << endl;
 }
 

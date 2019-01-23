@@ -53,7 +53,6 @@ TrieNode *traverseToNode(TrieNode *node, std::string s) {
 }
 
 TrieSearchResult _searchWithError(TrieNode *root, std::string s) {
-  std::string letters = "abcdefghijklmnopqrstuvwxyz";
   TrieSearchResult result;
   result.found = false;
   result.isAddError = false;
@@ -65,7 +64,7 @@ TrieSearchResult _searchWithError(TrieNode *root, std::string s) {
   for (int i = 0; i < ALPHABET_COUNT; i++) {
     if (root->children[i] != nullptr) {
       std::string sCopy = s;
-      sCopy.insert(0, std::string(1, letters[i]));
+      sCopy.insert(0, std::string(1, 'a' + i));
       TrieNode *curr = traverseToNode(root, sCopy);
       if (curr != nullptr && curr->EOW) {
         result.found = true;
