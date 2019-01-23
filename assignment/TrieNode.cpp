@@ -27,7 +27,7 @@ void _getWords(TrieNode *node, std::string &str, std::vector<std::string> *wordL
             _getWords(curr, str, wordList);
             str.pop_back();
         }
-    }
+        }
 }
 
 std::vector<std::string> TrieNode::getWords(std::string starting) {
