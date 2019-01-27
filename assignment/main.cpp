@@ -57,9 +57,9 @@ int main() {
     case 7:
       displayWordStartingWithStr(&root);
       break;
-      case 8:
-        spellCheckWordWithError(&root);
-            break;
+    case 8:
+      spellCheckWordWithError(&root);
+      break;
     default:
       return 0;
     }

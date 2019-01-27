@@ -5,9 +5,12 @@
 #include <string>
 
 struct TrieSearchResult {
+  // True if word is found
   bool found;
-    bool isDelError, isAddError;
-  std::string *strings;
+  // True if word is deletion error
+  bool isDelError;
+  // True if word is addition error
+  bool isAddError;
 };
 // Trie classstores the root TrieNode
 class Trie {
@@ -20,7 +23,7 @@ public:
   // true if found and false if not
   TrieSearchResult search(std::string s);
 
-    TrieSearchResult searchWithError(std::string s);
+  TrieSearchResult searchWithError(std::string s);
   // Prints the elements in the trie
   void display();
 
@@ -32,8 +35,6 @@ public:
 
   // getWords returns a vector of words in the TrieNode
   std::vector<std::string> getWords();
-
-  // getPos gets the position of a character in the array
 
 private:
   int count;
